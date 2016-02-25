@@ -5,9 +5,9 @@
 ?>
 
 <div class="container">
-	<form>
+	<form action="../app/add_question.php" method="post">
 		<label for="question">Your Question</label>
-		<input type="text" class="form-control" id="question" required placeholder="Enter Question">
+		<input type="text" class="form-control" id="question" name="question" required placeholder="Enter Question">
 		<hr/>
 		<div class="options_header">
 			<div class="col-xs-4">
@@ -23,11 +23,12 @@
 		<ol class="input_options">
 			<div class="col-xs-8">
 			  <label for="ex1">Option 1</label>
-			  <input class="form-control" id="ex1" type="text" placeholder="Option1">
+			  <input class="form-control" id="ex1" name="option1" type="text" required placeholder="Option1">
 			</div>
 			<div class="col-xs-4"></div>
 		</ol>
 		<hr/>
+		<input type="hidden" id="hide" name="count" value="1">
 		<div class="submit">
 			<input type="submit" value="Submit" class="btn btn-success">
 		</div>
@@ -43,13 +44,10 @@
 				alert("We suggest you to add maximum of 4 options");
 			}else{
 				counter++;
-				var nextOne = '<div class="col-xs-8"><label for="ex'+counter+'">Option '+counter+'</label><input class="form-control" id="ex'+counter+'" type="text" placeholder="Option'+counter+'"></div><div class="col-xs-4"></div>';
+				var nextOne = '<div class="col-xs-8"><label for="ex'+counter+'">Option '+counter+'</label><input class="form-control" id="ex'+counter+'" name="option'+counter+'" type="text" required placeholder="Option'+counter+'"></div><div class="col-xs-4"></div>';
 				$(".input_options").append(nextOne);
 			}
-			
+			$('#hide').val(counter);
 		});
-
 	});
-
-
 </script>
